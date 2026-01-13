@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VelvetCinema | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="VelvetCinema Logo" style="height: 40px;">
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+            <a href="profile.html">Profile</a> </nav>
+        <div class="btn-group">
+            <a href="login.html">Logout</a>
+            <a href="signup.html">Sign Up</a> </div>
+    </header>
+
+    <main>
+        <section class="movie-showcase">
+            <div class="carousel-container" id="heroCarousel">
+                </div>
+            <button class="carousel-nav prev" id="carouselPrev">❮</button>
+            <button class="carousel-nav next" id="carouselNext">❯</button>
+        </section>
+
+        <div class="tabs">
+            <button class="tab active" onclick="filterMovies('now')">NOW SHOWING</button>
+            <button class="tab" onclick="filterMovies('soon')">COMING SOON</button>
+        </div>
+
+        <section id="movies" class="movie-grid"></section>
+    </main>
+
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <button class="close-x-btn" onclick="closeTrailer()">×</button>
+            <iframe id="trailerFrame" src="" frameborder="0" allowfullscreen></iframe> <button class="modal-action-button" onclick="bookFromTrailerModal()">Book a Ticket</button>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+                <button class="close-x-btn" onclick="closeBooking()">×</button>
+
+                <div id="bookingStep1">
+                    <h2 id="bookingMovieTitle">Booking for: <span id="movieTitlePlaceholder"></span></h2>
+                    <label for="bookingDate">Date:</label>
+                    <input type="date" id="bookingDate" />
+
+                    <label>Select Time:</label>
+                    <div class="time-slots" id="timeSlotsContainer">
+                        </div>
+
+                    <label for="ticketCount">Number of Tickets:</label>
+                    <input type="number" id="ticketCount" min="1" max="10" value="1" />
+
+                    <div class="seats-grid" id="seatsContainer">
+                        </div>
+
+                    <div class="modal-buttons-group">
+                        <button onclick="goToNextStep()">Next</button>
+                        <button onclick="closeBooking()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="bookingStep2" style="display:none;">
+                    <h2 id="bookingConfirmTitle">Confirm Booking</h2>
+                    <div class="booking-summary">
+                        <p><strong>Movie:</strong> <span id="summaryMovie"></span></p>
+                        <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+                        <p><strong>Time:</strong> <span id="summaryTime"></span></p>
+                        <p><strong>Tickets:</strong> <span id="summaryTickets"></span></p>
+                        <p><strong>Seats:</strong> <span id="summarySeats"></span></p>
+                        <p><strong>Total:</strong> <span id="summaryTotal"></span></p>
+                    </div>
+
+                    <h4>PERSONAL DETAILS</h4>
+                    <input type="text" id="personalName" placeholder="Name*" required />
+                    <input type="email" id="personalEmail" placeholder="Email*" required />
+                    <input type="tel" id="personalPhone" placeholder="Phone (optional)" />
+                    <textarea id="pickupComments" placeholder="Pickup Comments (optional)"></textarea>
+
+                    <h4>PAYMENT METHOD</h4>
+                    <div class="payment-options-container">
+                        <label class="payment-option-label" id="cardPayment">
+                            <input type="radio" name="paymentMethod" value="credit_debit_card" checked>
+                            <div class="custom-radio"></div> <div class="payment-content">
+                                <img src="images/credit_card_icon.png" alt="Credit/Debit Card">
+                                <span>Credit/Debit Card</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-option-label" id="gcashPayment">
+                            <input type="radio" name="paymentMethod" value="gcash">
+                            <div class="custom-radio"></div> <div class="payment-content">
+                                <img src="images/gcash_icon.png" alt="GCash">
+                                <span> </span> </div>
+                        </label>
+
+                        <label class="payment-option-label" id="mayaPayment">
+                            <input type="radio" name="paymentMethod" value="maya">
+                            <div class="custom-radio"></div> <div class="payment-content">
+                                <img src="images/maya_icon.png" alt="Maya">
+                                <span></span> </div>
+                        </label>
+
+                        <label class="payment-option-label" id="onlineBankingPayment">
+                            <input type="radio" name="paymentMethod" value="online_banking">
+                            <div class="custom-radio"></div> <div class="payment-content">
+                                <img src="images/online_banking_icon.png" alt="Online Banking">
+                                <span>Online Banking</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <label class="terms-consent-label">
+                            <input type="checkbox" id="termsConsent">
+                            <div class="custom-checkbox"></div> <span class="text-content">By submitting, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <label class="terms-consent-label">
+                            <input type="checkbox" id="sendConfirmation">
+                            <div class="custom-checkbox"></div> <span class="text-content">Send me a confirmation for this booking.</span>
+                        </label>
+                    </div>
+
+                    <div class="modal-buttons-group">
+                        <button onclick="goToPreviousStep()">Back</button>
+                        <button onclick="confirmPayment()">Confirm Payment</button>
+                    </div>
+                </div>
+
+                <div class="receipt" id="receipt" style="display:none;"></div>
+        </div>
+    </div>
+
+    <footer>© 2025 VelvetCinema. All rights reserved.</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

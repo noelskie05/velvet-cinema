@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>VelvetCinema | Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            /* Background Styling */
+            background: url(http://googleusercontent.com/image_collection/image_retrieval/12598683128618438218) center/cover no-repeat; /* Movie poster compilation */
+            /* Add a semi-transparent overlay for better text readability */
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+            z-index: -1; /* Place overlay behind content */
+        }
+
+        /* Interactive Logo Styling */
+        .login-logo {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 250px;
+            animation: pulse 2s infinite ease-in-out;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            z-index: 1; /* Ensure logo is above the overlay */
+        }
+
+        .login-logo img {
+            height: 80px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(179, 0, 0, 0.7));
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .login-logo:hover img {
+            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 1));
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(179, 0, 0, 0.5)); }
+            50% { transform: scale(1.02); filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(179, 0, 0, 0.5)); }
+        }
+
+        /* Login Box Styling */
+        .login-box {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            position: relative; /* Ensure login box is above the overlay */
+            z-index: 1;
+        }
+
+        .login-box h2 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+
+        .login-box .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .login-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ccc;
+        }
+
+        .login-box input[type="text"],
+        .login-box input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .login-box input[type="text"]:focus,
+        .login-box input[type="password"]:focus {
+            border-color: #b30000;
+            outline: none;
+            background-color: #2a2a2a;
+        }
+
+        .login-box button {
+            background-color: #b30000;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .login-box button:hover {
+            background-color: #ff0000;
+        }
+
+        .login-box .signup-link {
+            margin-top: 20px;
+            font-size: 0.95em;
+            color: #aaa;
+        }
+
+        .login-box .signup-link a {
+            color: #b30000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .login-box .signup-link a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
+            position: relative; /* Ensure footer is above the overlay */
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-logo" onclick="window.location.href='index.html'">
+        <img src="images/logo.png" alt="VelvetCinema Logo">
+    </div>
+
+    <div class="login-box">
+        <h2>Login to VelvetCinema</h2>
+        <form action="index.html" method="GET">
+            <div class="input-group">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username or email" required />
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required />
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="Signup.html">Sign up here</a></p>
+    </div>
+
+    <footer>© 2025 VelvetCinema. All rights reserved.</footer>
+
+</body>
+</html>
